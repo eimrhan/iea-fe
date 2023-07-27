@@ -1,0 +1,92 @@
+@import "reset"; // başka bir scss (reset.scss) dosyasındaki tüm içeriği import edebilirsin.
+@import "myfont"; // _dosyaadi.scss ile oluşturduğun dosyada kendine özel tanımlamalar yapıp, 
+									// istediğin yerde (_ olmadan) import edip içindeki değişkenleri kullanabilirsin. 
+
+
+// global değişken tanımlamaları yapabilirsin.
+$color-primary: #ff00ff; 
+$color-secondary: #00ffff; 
+
+// hiyerarşik yapıları "ul li h1" şeklinde yazmak yerine scss'de iç içe yazıyoruz.
+ul {
+	list-style: none;
+	
+	li {
+		display: inline-block;
+		color: $color-primary;
+
+		h1 {
+			$color-secondary: #0000ff; 
+			/* alt scope'da !global eklemeden değişim yaparsan sadece buraya etki eder. */
+			color: $color-secondary
+		}
+		h2 {
+			color: $color-secondary /* #00ffff olarak kaldı */
+		}
+		h3 {
+			$color-secondary: #00ff00 !global; 
+			/* sonuna !global eklersen hepsi değişir. */
+			color: $color-secondary;
+		}
+		h4 {
+			color: $color-secondary; /* #00ff00 */
+		}
+	
+		&:hover{
+			color: bisque;
+		} /* & işareti burada parent elementi işaret eder. */
+		&:first-child{
+			background-color: darkcyan;
+		}
+	}
+}
+
+
+a {
+	color: blueviolet;
+	/* ayrıca tüm font başlıklarını bu şekilde toparlayabilirsin. */
+	font: {
+		family: Helvetica;
+		size: 36px;
+		weight: bold;
+	}
+}
+
+p {
+	@extend a;	/* extend ile bir başka elementin özelliklerini miras alabilirsin. */
+	background-color: darkblue;	/* ve üstüne istediğin eklemeyi/değişikliği yaparsın. */
+}
+
+
+// @mixin ile tekrar kullancağın özellikleri bir arada bir değişkende tutabilirsin.
+@mixin kalin_ve_renkli ($color: yellow, $size: 40px) { /* prop da alabilir */
+	color: $color;
+	font: {
+		weight: bolder;
+		size: $size;
+	}
+}
+
+// kullanacağın yerde @include degisken_adi ile çağırılır, gerekliyse proplar verilir.
+q {
+	@include kalin_ve_renkli (red)
+}
+
+span {
+	@include kalin_ve_renkli (blue, 30px)
+}
+
+// prop almıyorsa veya default değerler kullanılacaksa mixin bir arada da verilebilir.
+h5, h6 {
+	@include kalin_ve_renkli;
+}
+
+// _myfont dosyasında tanımladığım değişkenlerimi burada kullanabiliriyorum
+describe {
+	color: $myColor;
+	size: $mySize;
+}
+
+//* "glenn2223.live-sass" eklentisi sass dosyalarını otomatik compile edip css dosyasını dönüştürüyor.
+
+//? .sass'ın .scss'den farkı: .sass'da ';' zorunluluğu yok ve '{ }' de kullanılmıyor.

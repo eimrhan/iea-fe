@@ -1,0 +1,38 @@
+body {
+	background-color: #141414;
+	color: aliceblue;
+}
+h1 {
+	text-align: center;
+}
+
+.addNote {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 5%;
+}
+#notesInput {
+	background-color: #141414;
+	color: aliceblue;
+}
+#addButton {
+	background-color: #141414;
+	color: aliceblue;
+}
+
+ul { 
+	width: 90%;
+	justify-content: space-around;
+	padding: 10px;
+	margin: 10px;
+}
+.notes {
+	display: inline-block;
+	width: 90%;
+}
+.btnDelete {
+	display: inline-block;
+	width: 10%;
+	background-color: crimson;
+}

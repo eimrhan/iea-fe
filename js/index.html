@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JS</title>
+</head>
+<body>
+
+	<div>
+		<h1 id="iea">iea JS</h1>
+		<p class="paragraf">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+		<p class="paragraf">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div>
+	<p class="paragraf">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+
+	<select>
+		<option value="1"></option>
+		<option value="2"></option>
+		<option value="3"></option>
+	</select>
+
+	<!-- ! Değişken Tipleri -->
+	<script>
+
+		var a = 3
+		let b = 3
+		const c = 3
+
+		var a = 4
+		// let b = 4  // yapamazsın.
+		// const c = 4 // yapamazsın.
+
+		a = 5
+		b = 5
+		// c = 5 // yapamazsın.
+
+		{
+			var a = "altı"
+			let b = "altı"
+			const c = "altı"
+			console.log(a);
+			console.log(b);
+			console.log(c);
+		}
+
+		console.log(a);
+		console.log(b);
+		console.log(c);
+
+
+		let x = 9999999999999999n // 15 karaktere kadar normal çalışır, 16. karakterde yuvarlar.
+		console.log(x);						// sonuna 'n' eklersen yuvarlamaz.
+	</script>
+
+	<script>
+		const colors = ["siyah", "sarı", "yeşil", "kırmızı"];
+		let index = colors.findIndex(p => p == "sarı") //* lambda
+		console.log(index); // 1
+
+
+		//! objects
+
+		const developer = {
+			name : 'Emirhan',
+			age : 26,
+			langs : ['html', 'css', 'js'],
+			adress : {
+				city: 'Sakarya',
+				district: 'Erenler'
+			},
+			work : () => {
+				console.log("işsiz..");
+			}
+		}
+		console.log(developer.work());
+
+		const developers = [
+			{
+				name: 'Emirhan',
+				surname: 'Çelebi'
+			},
+			{
+				name: 'Emirhan2',
+				surname: 'Çelebi'
+			}
+		]
+		console.log(developers[0].name);
+
+
+		//! sorting
+
+		const numbers = [1, 54, 12, 154, 99]
+
+		console.log(numbers.sort());
+		// [1, 12, 154, 54, 99]
+		console.log(numbers.sort((x,y) => {
+			return x-y
+		})); // [1, 12, 154, 54, 99]
+		console.log(numbers.sort((x,y) => {
+			return y-x
+		})); // [154, 99, 54, 12, 1]
+
+
+		/** "use strict" */
+		
+		x = 5.56;       // Hatasız çalışır.
+		console.log(x);
+/*
+		myFunction();
+
+		function myFunction() {
+			"use strict";
+			y = 7.62;   // Hata verecek çünkü y tanımlamadı.
+		}
+		console.log(y);
+*/
+	</script>
+
+	<!-- ! Döngüler -->
+	<script>
+
+		const person = {
+			name:"Emirhan",
+			age:26,
+			salary:0
+		};
+
+		const langs = ["HTML","CSS","JS"];
+		const name = "Emirhan";
+
+
+		// forEach
+
+		langs.forEach( (lang) => {
+			console.log(lang);
+		})
+		langs.forEach( (lang, index) => {
+			console.log(index, lang);
+		})
+
+
+		// For In
+
+		//Array
+		for (let index in langs){
+				console.log(langs[index]);
+		} // klasik for döngüsünün diziler için daha simple hali.
+
+		//String
+		for (let index in name){
+				console.log(name[index]);
+		} // string de bir dizi demiştik.
+
+		//Object
+		for(let prop in person) {
+				console.log(prop,person[prop]);
+		} // prop; değişken isimlerini döner. (name, age, salary)
+		// değerleri yazdırmak için de person[prop] kullanıldı.
+		// hatırla: objeleri key.value yerine key[value] yazarak da çağırabiliyorduk.
+
+		// For Of
+		// sadece dizilerde kullanılabiliyor.
+
+		//Array
+		for (let value of langs){
+				console.log(value);
+		} // for of direkt değeri yazar.
+
+		//String
+		for (let character of name){
+				console.log(character);
+		} // string de dizi mamtığıyla for of döngüsüne tabidir.
+		// string değerinin her bir karakterini döner.
+
+/* 	//Object
+		for (let value of person){
+				console.log(value);
+		} // nesnede kullanılamıyor. HATA döner.
+
+		// for of asenkron yapılarla kullanılabilir. */
+
+
+
+		// set ve map'lerle de kullanılıyomuş..
+		for (let [key,value] of map)  // Destructing
+				console.log(key,value);
+		//veya
+		for (let value of set.value())
+				console.log(value);
+		for (let key of map.key()) // or map.value or set.key ..
+				console.log(key);
+	</script>
+
+	<!-- ! DOM -->
+	<script>
+		document.getElementById("iea").innerHTML = "<h5>iea</h5>"
+		// getElementById ile id belirttiğimiz unique nesnelere erişip üzerinde işlem yapabiliriz.
+		// .innerHTML ile html etiketleri ile birlikte değiştirebiliriz. 
+		// Sadece içeriğini değiştirmek için innreText kullanılabilir
+
+		document.querySelector("div p").innerText = "asdf" // css'te olduğu gibi, div'in altındaki p elentine eriştim.
+		// querySelector sadece  ilk bulduğu objeyi işleme alır.
+
+
+		/// birden fazla element üzerinde işlem yapmak için farklı selectorler mevcut:
+
+		let pElements = document.querySelectorAll("p") // artık bu bir dizi döndüğü için . koyup işlemi yaptıramazsın.
+
+		pElements.forEach(element => {
+			element.innerText = "qwerty"
+		});
+		// diziyi döngüye alıp tümüne işlem uygulayabilirsin.
+
+		// ya da indis ile erişio belirli elemana ulaşabilirsin.
+		pElements[0].innerText = "zxcv"
+
+		document.getElementsByClassName("paragraf") // paragraf classına ait tüm elementleri bir dizi olarak çeker.
+		document.getElementsByTagName("p") // p tagına ait tüm elementleri bir dizi olarak çeker.
+
+		//* bu tarz çoklu seçim işlemlerinde 1 adet item dahi dönse yine dizi olarak döner.
+		// bu yüzden tekli seçim için en iyi kullanım getElementById veya querySelector selectorleridir.
+
+		/// stil ve attribute değerlerini de değiştirebiliriz.
+
+		pElements[1].style.color = "green"
+
+		document.querySelector("select option").setAttribute("value","4");  
+		// select>option'daki ilk value değerini 4 ile değiştirdi.
+		
+
+
+	</script>
+</body>
+
+</html>

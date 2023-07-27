@@ -1,0 +1,111 @@
+/* @import url(https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap); */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* font-family: 'EB Garamond'; */
+}
+
+nav {
+	background-color: #333;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	overflow: hidden;
+	padding: 0 10px;
+	min-height: 80px;
+}
+
+.navbar_logo {
+	color: #f2f2f2;
+	text-decoration: none;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+nav ul {
+	list-style: none;
+}
+
+nav ul li {
+	display: inline-block;
+	line-height: 80px;
+	margin: 0 15px;
+}
+
+nav ul li a {
+	position: relative;
+	color: #f2f2f2;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+nav ul li a::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 3px;
+	width: 100%;
+	background: #f2f2f2;
+	transform: scaleX(0);
+	transition: transform .3s ease;
+	transform-origin: right;
+}
+
+nav ul li a:hover::before {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+label #btn, label #cncl {
+	color: #f2f2f2;
+	font-size: 28px;
+	cursor: pointer;
+	margin: 20px;
+	display: none;
+}
+
+#checkbox {
+	display: none;
+}
+
+@media screen and (max-width:768px) {
+	ul {
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		left: -100%;
+		top: 80px;
+		background: #333;
+		text-align: center;
+		transition: all .5s linear;
+	}
+
+	nav ul li {
+		display: block;
+		margin: 20px 0;
+		line-height: 30px;
+	}
+
+	nav ul li a {
+		font-size: 20px;
+	}
+
+	label #btn {
+		display: flex;
+	}
+
+	#checkbox:checked ~ ul {
+		left: 0;
+	}
+
+	#checkbox:checked ~ label #cncl {
+		display: flex;
+	}
+
+	#checkbox:checked ~ label #btn {
+		display: none;
+	}
+}

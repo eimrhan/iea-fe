@@ -1,0 +1,79 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111;
+  color: rgba(235, 222, 222, 0.678);
+}
+
+ul {
+  list-style: none;
+}
+ul li {
+  display: inline-block;
+  color: #ff00ff;
+  /* & işareti burada parent elementi işaret eder. */
+}
+ul li h1 {
+  /* alt scope'da !global eklemeden değişim yaparsan sadece buraya etki eder. */
+  color: #0000ff;
+}
+ul li h2 {
+  color: #00ffff;
+}
+ul li h3 {
+  /* sonuna !global eklersen hepsi değişir. */
+  color: #00ff00;
+}
+ul li h4 {
+  color: #00ff00; /* #00ff00 */
+}
+ul li:hover {
+  color: bisque;
+}
+ul li:first-child {
+  background-color: darkcyan;
+}
+
+a, p {
+  color: blueviolet;
+  /* ayrıca tüm font başlıklarını bu şekilde toparlayabilirsin. */
+  font-family: Helvetica;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+p {
+  /* extend ile bir başka elementin özelliklerini miras alabilirsin. */
+  background-color: darkblue; /* ve üstüne istediğin eklemeyi/değişikliği yaparsın. */
+}
+
+q {
+  /* prop da alabilir */
+  color: red;
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+span {
+  /* prop da alabilir */
+  color: blue;
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+h5, h6 {
+  /* prop da alabilir */
+  color: yellow;
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+describe {
+  color: #156084;
+  size: 14px;
+}/*# sourceMappingURL=sass.css.map */
