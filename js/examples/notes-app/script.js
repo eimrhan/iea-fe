@@ -24,7 +24,9 @@ function setInputValueToList() {
 
 	id++
 
-	ulEl.append(liEl, delEl)
+	if (liEl.innerText !== "") {
+		ulEl.append(liEl, delEl)
+	}
 	/* ul içine li harici başka element atmak kötü bir kullanım oldu.
 		burada notu li yerine spana atıp, li içine span+sil butonunu atıp,
 		li elemanını da en son ul içine atmak daha iyi bir tercih olur.
@@ -46,7 +48,6 @@ function deleteItem(e) {
 	e.target.remove();
 }
 
-
 addEl.onclick = setInputValueToList;
 
 /// alternatif kullanım:
@@ -60,3 +61,10 @@ addEl.addEventListener("click", () => {
 */ // fonksiyonu dışarıdan da çağırabilirsin direkt olarak buraya da yazabilirsin.
 
 // EventListener kullanımı daha yaygın deniyor.
+
+
+inputEl.addEventListener("keydown", (e) => {
+	if (e.key === "Enter" && inputEl.value !== "") {
+		setInputValueToList()
+	}
+})

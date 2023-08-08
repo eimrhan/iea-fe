@@ -15,14 +15,17 @@ h1 {
 #notesInput {
 	background-color: #141414;
 	color: aliceblue;
+	font-size: 1.5rem
 }
 #addButton {
 	background-color: #141414;
 	color: aliceblue;
+	font-size: 1.5rem;
+	margin-left: 1rem;
 }
 
 ul { 
-	width: 90%;
+	/* width: 96%; */
 	justify-content: space-around;
 	padding: 10px;
 	margin: 10px;
@@ -30,9 +33,13 @@ ul {
 .notes {
 	display: inline-block;
 	width: 90%;
+	font-size: 2rem;
+	border-bottom: 1px solid #520515;
 }
 .btnDelete {
 	display: inline-block;
 	width: 10%;
-	background-color: crimson;
+	margin-left: auto;
+	background-color: #520515;
+	color: beige;
 }
