@@ -1,0 +1,30 @@
+body {
+	background-color: #333;
+	color: #ccc;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #ccc;
+}
+
+.navbar {
+	display: flex;
+	gap: 10px;
+	list-style: none;
+}
+
+.navbar li a {
+	text-decoration: none;
+	color: #ccc;
+	cursor: pointer;
+	padding: 10px;
+}
+
+.navbar li a:hover {
+	background-color: #ccc;
+	color: #333;
+	border-radius: 5px;
+}
