@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery</title>
+</head>
+
+<body>
+
+	
+
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+	<script>
+		$(document).ready(() => {
+			// kodlar sayfa yüklendikten sonra çalışması için bunun içine yazılır
+			// Document Ready Event (DRE)
+
+			$("button").click(function () {
+				$(this).hide(); // this bulunduğu elementi seçer.
+				$(this).parent.show(); // parent elemente erişmek için
+			});
+		})
+
+		// alternatif kullanım: (daha nadir kullanılan DRE yöntemi)
+		/* $(function() {
+			...
+		}) */
+
+		// Attribute
+		$("a").attr("href", "#");
+		$("a").removeAttr("href");
+		$("a").toggleClass("test");
+		$("a").css({
+			"background-color": "red",
+			"font-size": "18px"
+		});
+
+		// get/set
+		$("#a").val("a elementinin değeri değişti");
+
+		$("h2").text("h2 yazısı değişti"); // innerText
+		$("h2").html(<h1>h2 oldu h1</h1>); // innerHTML
+
+
+		// Animation
+		$("button").click(() => {
+			$("div").animate({
+				left: '250px',
+				height: '+=150px'	// += ile sürekli ekleme yapılabilir.
+			}, 2000, () => { // 2s sonra diğer fonksiyona geçer
+				$(this).css({
+					"background-color": "red",
+					"color": "white"
+				})
+			}).slideToggle(); // o da bitince sıradakine
+		});
+
+		// AJAX
+		$.ajax({
+			method: "GET",
+			url: "https://jsonplaceholder.typicode.com/todos",
+			data: {},
+			success: (data) => {
+				console.log(data);
+			},
+			error: (err) => {
+				console.log(err);
+			}
+		})
+	</script>
+</body>
+
+</html>
