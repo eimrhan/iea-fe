@@ -9,8 +9,19 @@
 
 <body>
 
-	
+	<h1>JQuery Attribute</h1>
+	<a class="form-control">Link</a>
 
+	<h1>JQuery Get/Set</h1>
+  <input id="test" type="text" value="Emirhan">
+  <h2>Hello World!</h2>
+
+	
+	<h1>JQuery Animation</h1>
+  <button>Divi hareketlendir</button>
+  <div style="background: #98bf21;height: 100px;width: 100px;position: absolute;"></div>
+
+	
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
 	<script>
@@ -18,7 +29,7 @@
 			// kodlar sayfa yüklendikten sonra çalışması için bunun içine yazılır
 			// Document Ready Event (DRE)
 
-			$("button").click(function () {
+			$("#element").click(function () {
 				$(this).hide(); // this bulunduğu elementi seçer.
 				$(this).parent.show(); // parent elemente erişmek için
 			});
@@ -39,10 +50,10 @@
 		});
 
 		// get/set
-		$("#a").val("a elementinin değeri değişti");
+		$("#test").val("test elementinin değeri değişti");
 
 		$("h2").text("h2 yazısı değişti"); // innerText
-		$("h2").html(<h1>h2 oldu h1</h1>); // innerHTML
+		$("h2").html("<h3>h2 oldu h3</h3>"); // innerHTML
 
 
 		// Animation

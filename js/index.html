@@ -21,6 +21,21 @@
 		<option value="3"></option>
 	</select>
 
+	<hr/><hr/>
+
+	<h1>Forms</h1>
+
+	<form onsubmit="save(event)">
+		<label for="todo">To-Do: </label>
+		<input type="text" id="todo">
+		<button type="submit">Save</button>
+	</form>
+	<hr/>
+
+	<ul>
+	</ul>
+
+
 	<!-- ! Değişken Tipleri -->
 	<script>
 
@@ -118,9 +133,9 @@
 */
 	</script>
 
+
 	<!-- ! Döngüler -->
 	<script>
-
 		const person = {
 			name:"Emirhan",
 			age:26,
@@ -182,7 +197,6 @@
 		// for of asenkron yapılarla kullanılabilir. */
 
 
-
 		// set ve map'lerle de kullanılıyomuş..
 		for (let [key,value] of map)  // Destructing
 				console.log(key,value);
@@ -192,6 +206,7 @@
 		for (let key of map.key()) // or map.value or set.key ..
 				console.log(key);
 	</script>
+
 
 	<!-- ! DOM -->
 	<script>
@@ -228,9 +243,27 @@
 
 		document.querySelector("select option").setAttribute("value","4");  
 		// select>option'daki ilk value değerini 4 ile değiştirdi.
-		
+	</script>
 
 
+	<!-- ! Form Elementleriyle Çalışmak: -->
+	<script>
+		let todos = []
+
+		function save(e) {
+			e.preventDefault(); // sayfayı yenilemesin diye bu yazılmalı
+
+			let inputElement = document.querySelector("#todo"); // inputu yakaladık
+			todos.push(inputElement.value); // input değerini listeye ekledik
+			inputElement.value = ""; // input içini temizledik
+
+			let text = "";
+			todos.forEach(element => {
+				text += "<li>" + element + "</li>";
+			});
+
+			document.querySelector("ul").innerHTML = text;
+		}
 	</script>
 </body>
 
