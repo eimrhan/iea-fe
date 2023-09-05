@@ -1,0 +1,36 @@
+:root {
+	--dark : #141414;
+	--light: #f2f2f2
+}
+
+body {
+	background-color: var(--dark);
+	color: var(--light);
+	font-size: 2rem;
+}
+
+table {
+	border: 1px solid var(--light);
+	border-collapse: collapse;
+
+	width: 50%;
+}
+
+th, td  {
+	border: 1px solid var(--light);
+}
+
+th {
+	background-color: cornflowerblue;
+	color: #141414;
+}
+
+tr:nth-child(2n-1) {
+	background-color: #242424;
+}
+tr:nth-child(2n) {
+	background-color: #323232;
+}
+tr:hover {
+	background-color: #161616;
+}

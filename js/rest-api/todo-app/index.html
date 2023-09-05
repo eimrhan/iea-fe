@@ -3,20 +3,31 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
 	<title>TodoApp</title>
 </head>
 <body>
 	<h1>TodoApp</h1>
 
-	<form onsubmit="add(event)">
+	<form onsubmit="addTodo(event)">
 		<label for="todo">To-Do: </label>
 		<input type="text" id="todo">
 		<button type="submit">Save</button>
 	</form>
 	<hr/>
 
-	<ul>
-	</ul>
+	<table>
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>ToDo</th>
+				<th>isCompleted</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
 
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="script.js"></script>

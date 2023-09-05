@@ -1,9 +1,35 @@
 // import axios from "axios"
+// const { default: axios } = require("axios")
 
 const inputEl = document.querySelector("#todo")
-const ulEl = document.querySelector("ul")
+const tbodyEl = document.querySelector("tbody")
 
-const add = (e) => {
+const getTodoList = () => {
+	axios("http://localhost:5000/api/getTodoList")
+	.then(res => {
+		let data = res.data
+
+		tbodyEl.innerHTML = ""
+
+		for (const i in data) {
+			let isCompletedText = data[i].isCompleted === true ? "Completed" : "in Progress"
+
+			tbodyEl.innerHTML += `
+				<tr>
+					<td>${+i+1}</td>
+					<td>${data[i].todo}</td>
+					<td>${isCompletedText}</td>
+					<td>${data[i].isCompleted
+						? "" : `<button onclick='completeTodo(${i})'>Complete</button>`}
+						<button onclick='deleteTodo(${i})'>Delete</button>
+					</td>
+				</tr>
+			`
+		}
+	})
+}
+
+const addTodo = (e) => {
 	e.preventDefault()
 
 	let body = {todo: inputEl.value}
@@ -26,26 +52,32 @@ const add = (e) => {
 	}) */
 
 	//! Axios
-	axios.post("http://localhost:5000/api/add", body)
-		.then(res => {
-			console.log(res.data.message)
-			getTodoList()
-			inputEl.value = ""
-			inputEl.focus()
-		})
+	axios.post("http://localhost:5000/api/addTodo", body)
+	.then(res => {
+		console.log(res.data.message)
+		getTodoList()
+		inputEl.value = ""
+		inputEl.focus()
+	})
 }
 
-const getTodoList = () => {
-	fetch("http://localhost:5000/api/getTodoList")
-	.then(res => res.json())
-	.then(data => {
-		ulEl.innerHTML = ""
+const completeTodo = (i) => {
+	let body = {index: i}
 
-		data.forEach(element => {
-			let liEl = document.createElement("li")
-			liEl.innerText = element
-			ulEl.appendChild(liEl)
-		});
+	axios.post("http://localhost:5000/api/completeTodo", body)
+	.then(res => {
+		console.log(res.data.message)
+		getTodoList()
+	})
+}
+
+const deleteTodo = (i) => {
+	let body = {index: i}
+	
+	axios.post("http://localhost:5000/api/deleteTodo", body)
+	.then(res => {
+		console.log(res.data.message)
+		getTodoList()
 	})
 }
 
