@@ -1,0 +1,38 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #141414;
+	color: #aaa;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #181818;
+	padding: 2rem 1rem;
+}
+
+nav ul {
+	display: flex;
+	list-style: none;
+	gap: 1em;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: antiquewhite;
+	font-size: 1.2em;
+}
+nav ul li a:hover {
+	color: cadetblue
+}
+
+nav h1 {
+	color: cadetblue;
+	font-size: 2em;
+}
